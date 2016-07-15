@@ -1,0 +1,12 @@
+.page-header-block, header, footer {
+	display: none;
+}
+
+.start-page {
+	text-align: center;
+}
+
+.heading {
+	font-size: 50px;
+	padding-top: 50px;
+}
