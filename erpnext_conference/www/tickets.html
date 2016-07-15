@@ -1,0 +1,74 @@
+<!-- title: Manage subscription: -->
+<div class='table-responsive' style='margin-top: 30px;'>
+	<table class='table table-hover'>
+		<thead>
+			<tr>
+				<th>Buy Tickets</th>
+				<th style='font-weight: inherit;'>
+					Cost
+				</th>
+				<th style="font-weight: inherit;">
+					Quantity
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for ticket in tickets %}
+			<tr>
+				<td width='30%'>{{ ticket.name }} <br> {{ ticket.description }}</td>
+				<td width='30%'>{{ ticket.cost }}</td>
+				<td width='40%'>
+					<button class="btn btn-primary btn-xs btn-subtract"><i class="octicon octicon-chevron-down"></i></button>
+					<input class="input-quantity" type="number" value="0">
+					<button class="btn btn-primary btn-xs btn-add"><i class="octicon octicon-chevron-up"></i></button>
+				</td>
+			</tr>
+			{% endfor %}
+
+			<div class="total">
+				
+			</div>
+
+
+		</tbody>
+	</table>
+</div>
+<button class="btn btn-default btn-pay">Pay now</button>
+<script>
+	
+	frappe.ready(function () {
+		
+		$('.btn-add').on('click', function () {
+			var value = $('.input-quantity').val();
+			$('.input-quantity').val(value + 1);
+		});
+
+		$('.btn-subtract').on('click', function () {
+			var value = $('.input-quantity').val();
+			$('.input-quantity').val(value - 1);
+		});
+
+		$('.upgrade-section').on('click', '.pay', function() {
+			frappe.call({
+				method: 'central.www.upgrade.pay',
+				args: {
+					site_name: '{{ site.site_name }}',
+					cart: window.cart,
+					'full_name': '{{ full_name }}',
+					'email': '{{ email }}'
+				},
+				btn: $(this),
+				callback: function(r) {
+					if (r.exc) {
+						return;
+					}
+					if (r.message.redirect_to) {
+						window.location = r.message.redirect_to;
+					}
+				}
+			})
+		});
+
+	});
+
+</script>

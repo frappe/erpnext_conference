@@ -1,0 +1,47 @@
+{
+ "allow_comments": 0, 
+ "allow_delete": 0, 
+ "allow_edit": 0, 
+ "allow_multiple": 0, 
+ "creation": "2016-07-15 15:01:33.979557", 
+ "doc_type": "Participant", 
+ "docstatus": 0, 
+ "doctype": "Web Form", 
+ "idx": 0, 
+ "is_standard": 1, 
+ "login_required": 0, 
+ "modified": "2016-07-15 15:03:30.296385", 
+ "modified_by": "faris@example.com", 
+ "module": "ERPNext Conference", 
+ "name": "tickets", 
+ "owner": "faris@example.com", 
+ "published": 1, 
+ "route": "details", 
+ "title": "Participant Details", 
+ "web_form_fields": [
+  {
+   "fieldname": "participant_name", 
+   "fieldtype": "Data", 
+   "hidden": 0, 
+   "label": "Participant Name", 
+   "read_only": 0, 
+   "reqd": 1
+  }, 
+  {
+   "fieldname": "email", 
+   "fieldtype": "Data", 
+   "hidden": 0, 
+   "label": "Email", 
+   "read_only": 0, 
+   "reqd": 1
+  }, 
+  {
+   "fieldname": "organization", 
+   "fieldtype": "Data", 
+   "hidden": 0, 
+   "label": "Organization", 
+   "read_only": 0, 
+   "reqd": 0
+  }
+ ]
+}
